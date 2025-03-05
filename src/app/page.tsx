@@ -5,7 +5,8 @@ import { Projects } from "@/components/work/Projects";
 
 import { baseURL, routes } from "@/app/resources";
 import { home, about, person, newsletter } from "@/app/resources/content";
-import { Mailchimp } from "@/components";
+import { Footer, Mailchimp } from "@/components";
+import Waves from "@/components/Waves";
 import { Posts } from "@/components/blog/Posts";
 
 export async function generateMetadata() {
@@ -114,6 +115,94 @@ export default function Home() {
       )}
       <Projects range={[2]} />
       {newsletter.display && <Mailchimp newsletter={newsletter} />}
+
+      {/* <RevealFx translateY="20" delay={0.8} fillWidth> */}
+  <Flex 
+    fillWidth 
+    style={{ 
+      position: "relative",
+      width: "100vw", 
+      height: "400px", 
+      marginLeft: "calc(-50vw + 50%)",
+      marginRight: "calc(-50vw + 50%)",
+      marginTop: "4rem",
+      marginBottom: "0",
+      overflow: "hidden", // Add this to contain the waves
+      borderRadius: "7% 7% 0 0"
+    }}
+  >
+    <div style={{ 
+      position: "absolute",
+      top: 0,
+      left: 0,
+      width: "100%", 
+      height: "100%"
+    }}>
+      <Waves
+        lineColor="#4C7BF4"
+        backgroundColor="rgba(76, 123, 244, 0.1)"
+        waveSpeedX={0.0125}
+        waveSpeedY={0.005}
+        waveAmpX={40}
+        waveAmpY={20}
+        friction={0.925}
+        tension={0.005}
+        maxCursorMove={120}
+        xGap={10}
+        yGap={32}
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          zIndex: 0
+        }}
+        className="" // Empty string instead of Tailwind classes
+      />
+      <Flex
+        position="absolute"
+        top="0"
+        left="0"
+        right="0"
+        bottom="0"
+        vertical="center"
+        horizontal="center"
+        direction="column"
+        gap="m"
+        paddingX="m"
+        style={{ zIndex: 1 }}
+      >
+        <Heading variant="display-strong-s" style={{ color: "#fff", textAlign: "center" }}>
+          Ready to improve your career prospects?
+        </Heading>
+        <Button
+          variant="primary"
+          size="l"
+          href="/features"
+          arrowIcon
+          style={{ zIndex: 10 }}
+        >
+          Try ZureHub Now
+        </Button>
+        
+      </Flex>
+      
+    </div>
+  </Flex>
+{/* </RevealFx> */}
+      <Flex 
+        fillWidth 
+        style={{
+          position: "absolute",
+          bottom: 0,
+          left: 0,
+          width: "100%",
+          zIndex: 2
+        }}
+      >
+        <Footer />
+      </Flex>
     </Column>
   );
 }

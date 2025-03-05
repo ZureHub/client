@@ -145,7 +145,7 @@ export default async function RootLayout({ children }: RootLayoutProps) {
             position="relative"
             zIndex={0}
             fillWidth
-            paddingY="l"
+            
             paddingX="l"
             horizontal="center"
             flex={1}
@@ -154,7 +154,7 @@ export default async function RootLayout({ children }: RootLayoutProps) {
               <RouteGuard>{children}</RouteGuard>
             </Flex>
           </Flex>
-          <Footer />
+       
         </Column>
       </ToastProvider>
     </Flex>
