@@ -11,6 +11,9 @@ import { Source_Code_Pro } from "next/font/google";
 
 import { person, home } from "@/app/resources/content";
 import { Background, Column, Flex, ToastProvider } from "@/once-ui/components";
+import { ConditionalHeader } from "./ConditionalHeader";
+import { AuthProvider } from "@/context/AuthContext";
+
 
 export async function generateMetadata() {
   return {
@@ -90,6 +93,7 @@ export default async function RootLayout({ children }: RootLayoutProps) {
         code.variable,
       )}
     >
+      <AuthProvider>
       <ToastProvider>
         <Column style={{ minHeight: "100vh" }} as="body" fillWidth margin="0" padding="0">
           <Background
@@ -140,7 +144,7 @@ export default async function RootLayout({ children }: RootLayoutProps) {
             }}
           />
           <Flex fillWidth minHeight="16"></Flex>
-          <Header />
+          <ConditionalHeader />
           <Flex
             position="relative"
             zIndex={0}
@@ -157,6 +161,7 @@ export default async function RootLayout({ children }: RootLayoutProps) {
        
         </Column>
       </ToastProvider>
+      </AuthProvider>
     </Flex>
   );
 }
